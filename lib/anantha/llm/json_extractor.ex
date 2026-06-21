@@ -11,6 +11,7 @@ defmodule Anantha.LLM.JsonExtractor do
 
   Tries markdown code blocks first (```json or ```), then falls back to
   finding the outermost valid JSON object via balanced brace matching.
+  Returns `""` if no JSON is found.
   """
   @spec extract(String.t() | nil) :: String.t()
   def extract(nil), do: ""
@@ -24,7 +25,7 @@ defmodule Anantha.LLM.JsonExtractor do
   def extract(_), do: ""
 
   @doc """
-  Extracts the last (outermost) valid JSON object from content.
+  Extracts the longest (outermost) valid JSON object from content.
   """
   @spec extract_last_json_object(String.t()) :: {:ok, String.t()} | {:error, atom()}
   def extract_last_json_object(content) when is_binary(content) do
@@ -78,7 +79,7 @@ defmodule Anantha.LLM.JsonExtractor do
           nil ->
             case extract_last_json_object(trimmed) do
               {:ok, json} -> json
-              {:error, _} -> trimmed
+              {:error, _} -> ""
             end
 
           json ->

@@ -1,4 +1,4 @@
-defmodule Anantha.Llm.JsonAdapter do
+defmodule Anantha.LLM.JsonAdapter do
   @moduledoc """
   Defensive JSON decoder that tries `JsonRemedy.repair/1` first for
   malformed LLM output, falling back to `Jason.decode/2`.
@@ -15,17 +15,17 @@ defmodule Anantha.Llm.JsonAdapter do
   """
   @spec decode(String.t()) :: {:ok, term()} | {:error, term()}
   def decode(json_string) when is_binary(json_string) do
-    with {:repair, {:ok, result}} <- {:repair, try_json_remedy(json_string)},
-         {:ok, decoded} <- Jason.decode(result) do
-      {:ok, decoded}
-    else
-      {:repair, {:ok, result}} ->
-        Jason.decode(result)
+    case try_json_remedy(json_string) do
+      {:ok, decoded} when decoded != "" ->
+        {:ok, decoded}
 
-      {:repair, :fallback} ->
+      :fallback ->
         Jason.decode(json_string)
 
-      {:repair, {:error, _reason}} ->
+      {:ok, _} ->
+        Jason.decode(json_string)
+
+      {:error, _reason} ->
         Jason.decode(json_string)
     end
   end
