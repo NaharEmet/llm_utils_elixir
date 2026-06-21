@@ -99,6 +99,32 @@ defmodule Anantha.LLM.JsonExtractorTest do
 
       assert Jason.decode(result) == {:ok, %{"last" => true}}
     end
+
+    test "handles JSON with double closing braces (}} suffix)" do
+      # LLM providers sometimes emit an extra trailing } at end of JSON.
+      # Balanced brace matching should extract only up to the first matching brace.
+      content = ~s({"key": "value", "nested": {"inner": 1}}})
+      expected = ~s({"key": "value", "nested": {"inner": 1}})
+      assert JsonExtractor.extract(content) == expected
+      assert Jason.decode(JsonExtractor.extract(content)) ==
+               {:ok, %{"key" => "value", "nested" => %{"inner" => 1}}}
+    end
+
+    test "handles JSON with double braces after thinking text" do
+      # Real-world scenario: LLM response has text before JSON with }}
+      content = """
+      Here is your evaluation:
+
+      {"quality_score": 5, "title_quality": 5, "is_noise": false, "recommendation": "approve", "reasoning": "Some reasoning here", "improvements": "None required", "suggested_title": "A good title", "is_duplicate_of": null}}
+      """
+
+      result = JsonExtractor.extract(content)
+      # Verify the extracted JSON parses correctly (single } at end, not double)
+      assert {:ok, decoded} = Jason.decode(result)
+      assert decoded["quality_score"] == 5
+      assert decoded["recommendation"] == "approve"
+      assert decoded["is_duplicate_of"] == nil
+    end
   end
 
   describe "extract_last_json_object/1" do
