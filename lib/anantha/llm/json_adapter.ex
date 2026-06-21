@@ -30,6 +30,8 @@ defmodule Anantha.LLM.JsonAdapter do
     end
   end
 
+  def decode(_), do: {:error, :invalid_input}
+
   @doc """
   Like `decode/1` but raises on error.
   """

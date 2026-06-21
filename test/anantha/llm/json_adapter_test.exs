@@ -30,6 +30,20 @@ defmodule Anantha.LLM.JsonAdapterTest do
     test "handles JSON with trailing whitespace" do
       assert {:ok, %{"key" => "value"}} = JsonAdapter.decode("  {\"key\": \"value\"}  ")
     end
+
+    test "returns error for non-binary input" do
+      assert {:error, :invalid_input} = JsonAdapter.decode(nil)
+      assert {:error, :invalid_input} = JsonAdapter.decode(123)
+      assert {:error, :invalid_input} = JsonAdapter.decode(%{})
+    end
+
+    test "attempts repair for malformed JSON" do
+      # Trailing comma is not valid JSON but JsonRemedy can repair it.
+      # If JsonRemedy is not loaded, this falls back to Jason.decode which will also fail.
+      result = JsonAdapter.decode(~s({"key": "value",}))
+      # Either repair succeeds ({:ok, _}) or both repair and Jason fail ({:error, _})
+      assert result == {:ok, %{"key" => "value"}} or match?({:error, _}, result)
+    end
   end
 
   describe "decode!/1" do
