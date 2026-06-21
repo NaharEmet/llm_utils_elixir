@@ -853,8 +853,7 @@ defmodule JsonRemedy.Layer3.SyntaxNormalization do
             _ ->
               # Single identifier - process normally
               {remaining, new_result_iolist, new_repairs, new_in_string, new_escape_next,
-               new_quote, new_stack, new_expecting,
-               new_pos} =
+               new_quote, new_stack, new_expecting, new_pos} =
                 BinaryProcessors.process_identifier_binary_simple(
                   <<char::utf8, rest::binary>>,
                   result_iolist,
@@ -882,8 +881,7 @@ defmodule JsonRemedy.Layer3.SyntaxNormalization do
         else
           # Not expecting value - process normally
           {remaining, new_result_iolist, new_repairs, new_in_string, new_escape_next, new_quote,
-           new_stack, new_expecting,
-           new_pos} =
+           new_stack, new_expecting, new_pos} =
             BinaryProcessors.process_identifier_binary_simple(
               <<char::utf8, rest::binary>>,
               result_iolist,
@@ -914,8 +912,7 @@ defmodule JsonRemedy.Layer3.SyntaxNormalization do
         # Includes '.' for leading decimal numbers like .25
         # Includes '$' for currency symbols like $100
         {remaining, new_result_iolist, new_repairs, new_in_string, new_escape_next, new_quote,
-         new_stack, new_expecting,
-         new_pos} =
+         new_stack, new_expecting, new_pos} =
           BinaryProcessors.process_number_binary_simple(
             <<char::utf8, rest::binary>>,
             result_iolist,

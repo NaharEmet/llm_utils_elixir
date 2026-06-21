@@ -106,6 +106,7 @@ defmodule Anantha.LLM.JsonExtractorTest do
       content = ~s({"key": "value", "nested": {"inner": 1}}})
       expected = ~s({"key": "value", "nested": {"inner": 1}})
       assert JsonExtractor.extract(content) == expected
+
       assert Jason.decode(JsonExtractor.extract(content)) ==
                {:ok, %{"key" => "value", "nested" => %{"inner" => 1}}}
     end
