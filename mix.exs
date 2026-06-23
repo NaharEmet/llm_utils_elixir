@@ -1,14 +1,14 @@
-defmodule AnanthaJson.MixProject do
+defmodule AnanthaLLMUtils.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :anantha_json,
+      app: :anantha_llm_utils,
       version: "0.1.0",
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      description: "JSON extraction and defensive decoding utilities for LLM output",
+      description: "LLM utility toolkit — JSON extraction, defensive decoding, response parsing, and more",
       package: package(),
       source_url: "https://github.com/naharengineer/anantha-os",
       homepage_url: "https://github.com/naharengineer/anantha-os",
@@ -27,7 +27,7 @@ defmodule AnanthaJson.MixProject do
 
   defp package do
     [
-      name: :anantha_json,
+      name: :anantha_llm_utils,
       licenses: ["MIT"],
       links: %{
         "GitHub" => "https://github.com/naharengineer/anantha-os"
