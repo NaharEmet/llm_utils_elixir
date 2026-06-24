@@ -10,8 +10,8 @@ defmodule AnanthaLLMUtils.MixProject do
       start_permanent: Mix.env() == :prod,
       description: "LLM utility functions for JSON extraction and response parsing",
       package: package(),
-      source_url: "https://github.com/nahar/llm_utils",
-      homepage_url: "https://github.com/nahar/llm_utils",
+      source_url: "https://github.com/NaharEmet/llm_utils_elixir",
+      homepage_url: "https://github.com/NaharEmet/llm_utils_elixir",
       deps: deps()
     ]
   end
@@ -30,7 +30,7 @@ defmodule AnanthaLLMUtils.MixProject do
       name: :llm_utils,
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/nahar/llm_utils"
+        "GitHub" => "https://github.com/NaharEmet/llm_utils_elixir"
       },
       files: ~w(lib mix.exs README.md .formatter.exs)
     ]
