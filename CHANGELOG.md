@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 (2026-06-24)
+
+- Add GUIDE.md — internal development guide for contributors
+
 ## 0.1.0 (2026-06-24)
 
 - Initial release
