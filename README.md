@@ -1,4 +1,4 @@
-# AnanthaJson — LLM Utilities
+# LlmUtils — LLM Utilities
 
 LLM utility toolkit for Elixir: JSON extraction, defensive decoding, response parsing, and more.
 
@@ -11,7 +11,7 @@ offers a full response parser for structured LLM output.
 ```elixir
 def deps do
   [
-    {:anantha_llm_utils, "~> 0.1.0"}
+    {:llm_utils, "~> 0.1.0"}
   ]
 end
 ```

@@ -3,15 +3,15 @@ defmodule AnanthaLLMUtils.MixProject do
 
   def project do
     [
-      app: :anantha_llm_utils,
+      app: :llm_utils,
       version: "0.1.0",
       elixir: "~> 1.17",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      description: "LLM utility toolkit — JSON extraction, defensive decoding, response parsing, and more",
+      description: "LLM utility functions for JSON extraction and response parsing",
       package: package(),
-      source_url: "https://github.com/naharengineer/anantha-os",
-      homepage_url: "https://github.com/naharengineer/anantha-os",
+      source_url: "https://github.com/nahar/llm_utils",
+      homepage_url: "https://github.com/nahar/llm_utils",
       deps: deps()
     ]
   end
@@ -27,10 +27,10 @@ defmodule AnanthaLLMUtils.MixProject do
 
   defp package do
     [
-      name: :anantha_llm_utils,
+      name: :llm_utils,
       licenses: ["MIT"],
       links: %{
-        "GitHub" => "https://github.com/naharengineer/anantha-os"
+        "GitHub" => "https://github.com/nahar/llm_utils"
       },
       files: ~w(lib mix.exs README.md .formatter.exs)
     ]
