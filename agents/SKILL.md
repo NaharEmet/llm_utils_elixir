@@ -1,6 +1,6 @@
 ---
 name: llm-utils
-description: Work on llm_utils (AnanthaJson.*) package development. Use when modifying lib/anantha_json/.
+description: Work on llm_utils (LLMUtils.*) package development. Use when modifying lib/anantha_json/.
 ---
 
 # llm-utils Development Skill
@@ -11,11 +11,11 @@ When modifying anything in `lib/anantha_json/` — the `:llm_utils` Hex package.
 ## Package Structure
 ```
 lib/anantha_json/
-├── lib/anantha_json/
+├── lib/llm_utils/
 │   ├── json_extractor.ex    # JSON extraction from LLM markdown
 │   ├── json_adapter.ex      # Defensive JSON decode
 │   └── response_parser.ex   # End-to-end response parsing
-├── test/anantha_json/       # 26 tests
+├── test/llm_utils/          # 26 tests
 ├── mix.exs                  # Hex-ready config
 ├── AGENTS.md                # Agent instructions
 ├── agents/SKILL.md          # This skill file
@@ -24,9 +24,11 @@ lib/anantha_json/
 ├── README.md                # User-facing docs
 ```
 
+All modules use `LLMUtils.*` prefix (e.g., `LLMUtils.JsonExtractor`, `LLMUtils.JsonAdapter`, `LLMUtils.ResponseParser`).
+
 ## Key Modules
 
-### JsonExtractor
+### JsonExtractor (LLMUtils.JsonExtractor)
 Extracts JSON strings from LLM markdown output. Core extraction logic — everything else builds on this.
 
 Functions:
@@ -36,7 +38,7 @@ Functions:
 - `extract_all_arrays/1` — all JSON arrays
 - Internally: regex scanning for ```json blocks, then balanced brace/bracket matching
 
-### JsonAdapter
+### JsonAdapter (LLMUtils.JsonAdapter)
 Defensive JSON decode with automated repair.
 
 Functions:
@@ -45,7 +47,7 @@ Functions:
 - `valid_json?/1` — boolean check
 - Internally: graceful degradation — json_remedy repairs trailing commas, unquoted keys, etc.
 
-### ResponseParser
+### ResponseParser (LLMUtils.ResponseParser)
 End-to-end LLM response parsing. Composes JsonExtractor + JsonAdapter.
 
 Functions:

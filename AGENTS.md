@@ -3,7 +3,7 @@
 This is the `:llm_utils` Hex package — LLM utility functions for JSON extraction and response parsing.
 
 Package: `:llm_utils`
-Module prefix: `AnanthaJson.*`
+Module prefix: `LLMUtils.*`
 
 ## Before Working on This Package
 
@@ -33,8 +33,8 @@ Or read the skill directly: `agents/SKILL.md`
 | `GUIDE.md` | Internal architecture guide for contributors |
 | `README.md` | User-facing docs with API reference |
 | `CHANGELOG.md` | Version history |
-| `lib/anantha_json/` | Source code (3 modules) |
-| `test/anantha_json/` | Tests (26) |
+| `lib/llm_utils/` | Source code (3 modules under `LLMUtils.*`) |
+| `test/llm_utils/` | Tests (26) |
 
 ## Quick Start
 
