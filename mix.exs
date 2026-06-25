@@ -40,6 +40,7 @@ defmodule AnanthaLLMUtils.MixProject do
     [
       {:jason, "~> 1.2"},
       {:json_remedy, "~> 0.2"},
+      {:req, "~> 0.5"},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false}
     ]
   end
