@@ -35,6 +35,11 @@ defmodule LLMUtils.Provider do
   def auth_headers(_, _), do: []
 
   @doc """
+  Returns the environment variable name for a provider's API key.
+  """
+  def env_key(provider_id), do: get_provider_env(provider_id)
+
+  @doc """
   Resolve API key from environment for a provider.
   Falls back to `LLM_API_KEY` if provider-specific env var not set.
   """
