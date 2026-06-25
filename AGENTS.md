@@ -44,7 +44,7 @@ Or read the skill directly: `agents/SKILL.md`
 | `README.md` | User-facing docs with API reference |
 | `CHANGELOG.md` | Version history |
 | `lib/llm_utils/` | Source code (11 modules under `LLMUtils.*`) |
-| `test/llm_utils/` | Tests (47) |
+| `test/llm_utils/` | Tests (46) |
 
 ### Source Modules
 

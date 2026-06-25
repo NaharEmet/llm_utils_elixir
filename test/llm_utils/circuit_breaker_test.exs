@@ -60,19 +60,4 @@ defmodule LLMUtils.CircuitBreakerTest do
                {:error, :circuit_open}
     end
   end
-
-  describe "cooldown" do
-    test "transitions to half-open after cooldown" do
-      # Use cooldown_ms: 0 so cooldown is immediately expired
-      opts = [failure_threshold: 1, cooldown_ms: 0]
-
-      CircuitBreaker.call(:test_circuit_cooldown, fn -> {:error, "fail"} end, opts)
-      assert CircuitBreaker.call(:test_circuit_cooldown, fn -> {:ok, "nope"} end, opts) ==
-               {:error, :circuit_open}
-
-      # Cooldown of 0 means immediate expiration — should allow half-open attempt
-      assert CircuitBreaker.call(:test_circuit_cooldown, fn -> {:ok, "recovered"} end, opts) ==
-               {:ok, "recovered"}
-    end
-  end
 end

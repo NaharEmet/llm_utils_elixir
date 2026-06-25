@@ -32,7 +32,7 @@ lib/anantha_json/
 │   ├── circuit_breaker.ex     # 3-state circuit breaker
 │   ├── metrics.ex             # In-memory metrics collector
 │   └── logging.ex             # Toggleable logger
-├── test/llm_utils/            # 47 tests
+├── test/llm_utils/            # 46 tests
 │   ├── json_adapter_test.exs
 │   ├── json_extractor_test.exs
 │   ├── rate_limiter_test.exs
@@ -141,10 +141,10 @@ structured metadata only when enabled.
 ```bash
 cd lib/anantha_json && mix test
 ```
-47 tests covering:
+46 tests covering:
 - JSON extraction, JSON decode, response parsing
 - Rate limiting (sliding window, per-provider isolation, reset)
-- Circuit breaking (threshold, auto-open, cooldown, exception handling)
+- Circuit breaking (threshold, auto-open, close-on-success, exception handling)
 - Metrics (recording, aggregation, per-provider isolation, reset)
 - Logging (enable/disable toggle, no-op when disabled)
 

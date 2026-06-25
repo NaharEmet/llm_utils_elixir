@@ -100,7 +100,7 @@ ETS-based counters. `record/1` stores call metrics, `get_stats/1` returns aggreg
 `reset/0` clears all counters.
 
 #### Logging
-Toggleable structured logger. `configure/1` accepts `enabled:` (boolean) and `level:`.
+Toggleable structured logger. `enable/0`, `disable/0`, `enabled?/0` control state.
 Logs structured metadata with provider, model, duration fields.
 
 ## Design Principles
@@ -115,7 +115,7 @@ Logs structured metadata with provider, model, duration fields.
 
 - Location: `test/llm_utils/`
 - Run: `mix test` from `lib/anantha_json/`
-- 47 tests covering: JSON extraction, JSON decode, response parsing, rate limiting,
+- 46 tests covering: JSON extraction, JSON decode, response parsing, rate limiting,
   circuit breaking, metrics, logging, and edge cases
 - Stateful module tests run with `async: false` (ETS tables shared across tests)
 - Pure function tests run with `async: true` (JsonExtractor, JsonAdapter)
