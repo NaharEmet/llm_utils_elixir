@@ -8,5 +8,6 @@
 
 - Initial release
 - `AnanthaJson.JsonExtractor` — Extract JSON from LLM markdown output
-- `AnanthaJson.JsonAdapter` — Defensive JSON decode with json_remedy fallback
+- `LLMUtils.JsonAdapter` — Defensive JSON decode with json_remedy fallback
+- `LLMUtils.JsonAdapter` — Renamed from `AnanthaJson.JsonAdapter` to match the `:llm_utils` package namespace
 - `AnanthaJson.ResponseParser` — Parse and extract JSON from structured LLM responses

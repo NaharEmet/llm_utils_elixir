@@ -40,13 +40,13 @@ AnanthaJson.JsonExtractor.extract_all_objects(~s({"a": 1} {"b": 2}))
 ### JsonAdapter — defensive JSON decode
 
 ```elixir
-AnanthaJson.JsonAdapter.decode(~s({"key": "value"}))
+LLMUtils.JsonAdapter.decode(~s({"key": "value"}))
 # => {:ok, %{"key" => "value"}}
 
-AnanthaJson.JsonAdapter.decode(~s({"key": "value",}))
+LLMUtils.JsonAdapter.decode(~s({"key": "value",}))
 # => {:ok, %{"key" => "value"}}
 
-AnanthaJson.JsonAdapter.decode!("not json")
+LLMUtils.JsonAdapter.decode!("not json")
 # => ** (RuntimeError) JsonAdapter failed: ...
 ```
 

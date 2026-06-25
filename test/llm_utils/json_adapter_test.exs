@@ -1,7 +1,7 @@
-defmodule AnanthaJson.JsonAdapterTest do
+defmodule LLMUtils.JsonAdapterTest do
   use ExUnit.Case, async: true
 
-  alias AnanthaJson.JsonAdapter
+  alias LLMUtils.JsonAdapter
 
   describe "decode/1" do
     test "decodes valid JSON" do
@@ -52,7 +52,7 @@ defmodule AnanthaJson.JsonAdapterTest do
     end
 
     test "raises on invalid JSON" do
-      assert_raise RuntimeError, ~r/JsonAdapter failed/, fn ->
+      assert_raise RuntimeError, ~r/LLMUtils.JsonAdapter failed/, fn ->
         JsonAdapter.decode!("not json")
       end
     end

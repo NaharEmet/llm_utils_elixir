@@ -11,7 +11,7 @@ Three modules, pure functions, zero side effects:
   - `extract_all_arrays/1` — all JSON arrays
   - Internally: regex scanning for ```json blocks, then balanced brace/bracket matching
 
-- **AnanthaJson.JsonAdapter** — Defensive JSON decode with automated repair
+- **LLMUtils.JsonAdapter** — Defensive JSON decode with automated repair
   - `decode/1` — tries Jason.decode, falls back to json_remedy, returns {:ok, map} or {:error, term}
   - `decode!/1` — same but raises RuntimeError on failure
   - `valid_json?/1` — boolean check
