@@ -1,7 +1,7 @@
-defmodule AnanthaJson.JsonExtractorTest do
+defmodule LLMUtils.JsonExtractorTest do
   use ExUnit.Case, async: true
 
-  alias AnanthaJson.JsonExtractor
+  alias LLMUtils.JsonExtractor
 
   describe "extract/1" do
     test "extracts JSON from markdown code blocks with json language tag" do

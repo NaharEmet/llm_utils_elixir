@@ -1,4 +1,4 @@
-defmodule AnanthaJson.ResponseParser do
+defmodule LLMUtils.ResponseParser do
   @moduledoc """
   Single entry point for all LLM JSON parsing.
 
@@ -10,7 +10,7 @@ defmodule AnanthaJson.ResponseParser do
   - Concatenated JSON detection (multiple JSON objects merged together)
   """
 
-  alias AnanthaJson.JsonExtractor
+  alias LLMUtils.JsonExtractor
 
   # ────────────────────────────────────
   #  PUBLIC API

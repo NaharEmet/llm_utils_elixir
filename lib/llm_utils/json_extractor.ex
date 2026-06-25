@@ -1,4 +1,4 @@
-defmodule AnanthaJson.JsonExtractor do
+defmodule LLMUtils.JsonExtractor do
   @moduledoc """
   Extracts and parses JSON from LLM responses.
   """

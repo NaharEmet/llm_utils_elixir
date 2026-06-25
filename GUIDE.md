@@ -4,7 +4,7 @@
 
 Three modules, pure functions, zero side effects:
 
-- **AnanthaJson.JsonExtractor** — Extracts JSON strings from LLM markdown output
+- **LLMUtils.JsonExtractor** — Extracts JSON strings from LLM markdown output
   - `extract/1` — first JSON object from markdown (```json blocks or raw text)
   - `extract_array/1` — first JSON array
   - `extract_all_objects/1` — all JSON objects (concatenated or line-delimited)
@@ -17,7 +17,7 @@ Three modules, pure functions, zero side effects:
   - `valid_json?/1` — boolean check
   - Internally: graceful degradation — json_remedy repairs trailing commas, unquoted keys, etc.
 
-- **AnanthaJson.ResponseParser** — End-to-end LLM response parsing
+- **LLMUtils.ResponseParser** — End-to-end LLM response parsing
   - `parse/1` — extract + decode in one step
   - `parse_and_extract/2` — parse then extract specific key
   - `parse_array/1` — extract + decode JSON array

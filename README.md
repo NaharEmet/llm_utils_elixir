@@ -21,7 +21,7 @@ end
 ### JsonExtractor — extract JSON from LLM output
 
 ```elixir
-AnanthaJson.JsonExtractor.extract("""
+LLMUtils.JsonExtractor.extract("""
 Here is the result:
 
 ```json
@@ -30,10 +30,10 @@ Here is the result:
 """)
 # => "{\"key\": \"value\"}"
 
-AnanthaJson.JsonExtractor.extract_array("```json\\n[1, 2, 3]\\n```")
+LLMUtils.JsonExtractor.extract_array("```json\\n[1, 2, 3]\\n```")
 # => "[1, 2, 3]"
 
-AnanthaJson.JsonExtractor.extract_all_objects(~s({"a": 1} {"b": 2}))
+LLMUtils.JsonExtractor.extract_all_objects(~s({"a": 1} {"b": 2}))
 # => ["{\"a\": 1}", "{\"b\": 2}"]
 ```
 
@@ -53,13 +53,13 @@ LLMUtils.JsonAdapter.decode!("not json")
 ### ResponseParser — full LLM response parsing
 
 ```elixir
-AnanthaJson.ResponseParser.parse(~s({"key": "value"}))
+LLMUtils.ResponseParser.parse(~s({"key": "value"}))
 # => {:ok, %{"key" => "value"}}
 
-AnanthaJson.ResponseParser.parse_and_extract(~s({"name": "Alice"}), "name")
+LLMUtils.ResponseParser.parse_and_extract(~s({"name": "Alice"}), "name")
 # => {:ok, "Alice"}
 
-AnanthaJson.ResponseParser.parse_first_with_key(~s({"a": 1} {"name": "Bob"}), "name")
+LLMUtils.ResponseParser.parse_first_with_key(~s({"a": 1} {"name": "Bob"}), "name")
 # => {:ok, %{"name" => "Bob"}}
 ```
 
