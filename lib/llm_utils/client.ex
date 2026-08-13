@@ -51,6 +51,7 @@ defmodule LLMUtils.Client do
   - `:timeout` — Request timeout in ms (default: 60_000)
   - `:max_tokens` — Max tokens in response (default: nil = no limit)
   - `:suppress_thinking` — Disable thinking/reasoning (default: from provider config)
+  - `:reasoning_effort` — Reasoning effort for OpenRouter reasoning models: `:none`, `:minimal`, `:low`, `:medium`, `:high`, or `:xhigh` (default: unset = provider default)
   - `:fallback` — List of fallback provider IDs to try on failure
   - `:enable_circuit_breaker` — Enable circuit breaker (default: true)
   - `:enable_rate_limiter` — Enable rate limiting (default: true)
@@ -260,6 +261,33 @@ defmodule LLMUtils.Client do
         Map.put(body, :thinking, %{type: "disabled"})
       else
         body
+      end
+
+    body =
+      case Keyword.get(opts, :reasoning_effort) do
+        nil ->
+          body
+
+        :none ->
+          Map.put(body, :reasoning_effort, "none")
+
+        :minimal ->
+          Map.put(body, :reasoning_effort, "minimal")
+
+        :low ->
+          Map.put(body, :reasoning_effort, "low")
+
+        :medium ->
+          Map.put(body, :reasoning_effort, "medium")
+
+        :high ->
+          Map.put(body, :reasoning_effort, "high")
+
+        :xhigh ->
+          Map.put(body, :reasoning_effort, "xhigh")
+
+        other ->
+          Map.put(body, :reasoning_effort, other)
       end
 
     body =
